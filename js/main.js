@@ -20,6 +20,7 @@ let theButtons = document.querySelectorAll("#buttonHolder img"),
 // the app to behave?
 
 function changeBGImage() {
+	
 	// the `` is a JavaScript template string. It tells the JS enging to evaluate the expression
 	// inside the braces - run that little bit of code. In this case it's just pulling the ID of the
 	// button we clicked on and putting it at the end of the image name (0, 1, 2, 3)
@@ -27,21 +28,21 @@ function changeBGImage() {
 	
 	// bug fix #2 should go here. it's at most 3 lines of JS code.
 
-	dropZones.forEach(zone => {
-        if (zone.children.length > 0) {
-            zone.removeChild(zone.children[0]);
-            console.log('reseting the puzzle');
-			puzzlePieces = null;
-  
-        }
-
-    });
+	resetboard();
 
 	puzzleBoard.style.backgroundImage = `url(images/backGround${this.id}.jpg)`;
 	
+}
 
+function resetboard() {
 
-
+    dropZones.forEach(zone => {
+		
+        if (zone.children.length > 0) {
+			document.querySelector('.puzzle-pieces').appendChild(zone.firstChild);
+			console.log('resetting the puzzle');
+		}
+	});
 }
 
 
